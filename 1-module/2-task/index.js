@@ -11,6 +11,10 @@ function print(text) {
  */
 function isValid(name) {
   // ваш код...
+const hasSpace = /\s/.test(name);
+if ((name===null)||(hasSpace)||(name.length<4))  {   return false;
+}
+ return true; 
 }
 
 function sayHello() {
