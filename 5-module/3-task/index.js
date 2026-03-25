@@ -1,7 +1,7 @@
- function initCarousel() {
+function initCarousel() {
   let carouselInner = document.querySelector('.carousel__inner');
   let slides = document.querySelectorAll('.carousel__slide');
-  let leftArrow = document.querySelector('.carousel__arrow_left');
+    let leftArrow = document.querySelector('.carousel__arrow_left');
   let rightArrow = document.querySelector('.carousel__arrow_right');
   
   let currentIndex = 0;
@@ -30,6 +30,4 @@
   });
   
   updateCarousel();
-}
-
 }
