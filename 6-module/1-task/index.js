@@ -1,18 +1,52 @@
-/**
- * Компонент, который реализует таблицу
- * с возможностью удаления строк
- *
- * Пример одного элемента, описывающего строку таблицы
- *
- *      {
- *          name: 'Ilia',
- *          age: 25,
- *          salary: '1000',
- *          city: 'Petrozavodsk'
- *      }
- *
- */
 export default class UserTable {
   constructor(rows) {
+    this.elem = document.createElement('table');
+    this.thead = document.createElement('thead');
+    this.tbody = document.createElement('tbody');
+
+    let row1 = document.createElement('tr');
+    let heading1 = document.createElement('th');   //ИИ сказал, что тут надо через массив названия столбцов добавлять. Но я не сообразила, поэтому оставила так.
+    heading1.textContent = 'Имя';
+    let heading2 = document.createElement('th');
+    heading2.textContent = 'Возраст';
+    let heading3 = document.createElement('th');
+    heading3.textContent = 'Зарплата';
+    let heading4 = document.createElement('th');
+    heading4.textContent = 'Город';
+    let heading5 = document.createElement('th');
+
+    row1.appendChild(heading1);
+    row1.appendChild(heading2);
+    row1.appendChild(heading3);
+    row1.appendChild(heading4);
+    row1.appendChild(heading5);
+    this.thead.appendChild(row1);
+    this.elem.appendChild(this.thead);
+    this.elem.appendChild(this.tbody);
+ 
+    this.addData(rows);
   }
+  
+  addData(rows) {
+    rows.forEach(row => {
+      const tr = document.createElement('tr');
+      
+      // Создаем ячейки с данными
+      tr.innerHTML = `
+      <td>${row.name}</td>
+      <td>${row.age}</td>
+      <td>${row.salary}</td>
+      <td>${row.city}</td>
+      <td><button>X</button></td>
+    `;
+    
+    // Кнопка удаления
+    tr.querySelector('button').addEventListener('click', () => {
+      tr.remove();
+});
+    
+      this.tbody.appendChild(tr);
+  });
+}
+
 }
